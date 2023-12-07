@@ -1,5 +1,6 @@
 
 DROP TABLE IF EXISTS pet;
+DROP TABLE IF EXISTS game
 
 CREATE TABLE pet (
   id INT UNSIGNED,
@@ -28,3 +29,4 @@ INSERT INTO pet VALUES
   (13, 'jesus', 'horse', 'Appaloosa', '0001-3-23', 'L', 'just jesus'),
   (14, 'terminator', 'bird', 'big bird', '2001-10-11', 'L', 'possibly insane'),
   (15, 'eagly', 'bird', 'bald eagle', '1453-01-09', 'M', 'from peacemaker');
+
