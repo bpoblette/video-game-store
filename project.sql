@@ -1,7 +1,40 @@
 
 DROP TABLE IF EXISTS pet;
-DROP TABLE IF EXISTS game
+DROP TABLE IF EXISTS videogame;
+DROP TABLE IF EXISTS library;
+DROP TABLE IF EXISTS store;
+/*
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS friends;
+DROP TABLE IF EXISTS group;
+DROP TABLE IF EXISTS genre;
+*/
+CREATE TABLE videogame (
+  game_id INT UNSIGNED AUTO_INCREMENT,
+  name char(50),
+  price INT NOT NULL, 
+  tag_id char(50),
+  PRIMARY KEY(game_id, tag_id, name)
+);
 
+CREATE TABLE library(
+  library_id INT UNSIGNED AUTO_INCREMENT,
+  game_id INT UNSIGNED,
+  user_id INT,
+  PRIMARY KEY(library_id, game_id)
+);
+
+CREATE TABLE store(
+  /*library_id INT UNSIGNED, */
+  game_id INT UNSIGNED,
+  deal INT UNSIGNED,
+);
+/*
+CREATE TABLE users();
+CREATE TABLE friends();
+*/
+
+/*
 CREATE TABLE pet (
   id INT UNSIGNED,
   name TINYTEXT NOT NULL,
@@ -30,3 +63,4 @@ INSERT INTO pet VALUES
   (14, 'terminator', 'bird', 'big bird', '2001-10-11', 'L', 'possibly insane'),
   (15, 'eagly', 'bird', 'bald eagle', '1453-01-09', 'M', 'from peacemaker');
 
+*/
