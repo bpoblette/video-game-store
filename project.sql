@@ -72,7 +72,11 @@ CREATE TABLE users(
 INSERT INTO users VALUES
 (1, "bpobbs", "2003-01-09"),
 (2, "rex", '2001-01-12'),
-(3, "luthor", '2002-01-12');
+(3, "luthor", '2002-01-12'),
+(4, "kk",'2002-01-12'),
+(5, "ad", '2002-01-12'),
+(6, "da", '2002-01-12'),
+(7, "daf", '2002-01-12');
 
 CREATE TABLE friends(
   user_id INT UNSIGNED,
@@ -83,17 +87,29 @@ CREATE TABLE friends(
 );
 INSERT INTO friends VALUES
 (1,2),
-(1,3);
+(1,3),
+(3,2),
+(2,4),
+(1,5);
 
 CREATE TABLE library(
   game_id INT UNSIGNED,
   user_id INT UNSIGNED,
+  playtime INT UNSIGNED,
   PRIMARY KEY(game_id, user_id),
   FOREIGN KEY(game_id) REFERENCES videogame(game_id),
   FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 INSERT INTO library VALUES
-(1, 1);
+(1, 1, 50),
+(2, 1, 100),
+(3,1,65),
+(4,1,23),
+(1, 2, 5),
+(2, 2, 10),
+(3,2,5),
+(4,2,3)
+;
 
 CREATE TABLE group_table(
   group_id INT UNSIGNED,
@@ -104,7 +120,13 @@ CREATE TABLE group_table(
   FOREIGN KEY(group_member) REFERENCES users(user_id)
 );
 INSERT INTO group_table VALUES
-(1, "pokefans", 1, "a group for all fans of pokemon");
+(1, "pokefans", 1, "a group for all fans of pokemon"),
+(2, "other group", 1, "a group"),
+(3, "other group", 1, "a group"),
+(4, "other group", 1, "a group"),
+(5, "other group", 1, "a group"),
+(6, "other group", 1, "a group");
+
 
   SELECT v.name AS title, v.tag_id AS genre, s.sold AS number_sold, s.game_id
   FROM videogame v JOIN store s USING (game_id)

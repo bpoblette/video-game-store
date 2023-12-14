@@ -1,4 +1,4 @@
-<!-- library.ejs -->
+
 <!DOCTYPE html>
 <html>
     <html>
@@ -43,7 +43,7 @@ h1 {letter-spacing: 6px}
     <!-- Display the user's game library -->
     <ul>
         <% games.forEach(game => { %>
-            <li><%= game.title %> - <%= game.number_sold %> sold</li>
+            <li><%= game.title %> - genre: <%= game.genre%> - play time: <%=game.playtime%> hours</li>
         <% }); %>
     </ul>
 

@@ -29,7 +29,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Groups</title>
-    <!-- Add your styling and links to external stylesheets here -->
+
 </head>
 <body>
     <h1>All Groups</h1>
@@ -37,7 +37,7 @@
     <% if (groups.length > 0) { %>
         <ul>
             <% groups.forEach(group => { %>
-                <li><%= group.group_name %></li>
+                <li> Group Name: <%= group.group_name %> - Description: <%= group.description %> ></li>
             <% }); %>
         </ul>
     <% } else { %>

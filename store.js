@@ -192,7 +192,7 @@ app.post('/addGame', (request, response) => {
     const name = request.body.name;
     const tag_id = request.body.tag_id;
     const description = request.body.description;
-    const price = parseInt(request.body.price); // Assuming you have a price field in the form
+    const price = parseInt(request.body.price); 
 
     // Connect to MySQL
     const cnAddGame = mysql.createConnection(config);
@@ -204,7 +204,7 @@ app.post('/addGame', (request, response) => {
             return;
         }
 
-        // Insert new game into 'videogame' table
+        // Insert new game into videogame table
         const insertQuery = 'INSERT INTO videogame (name, tag_id, description) VALUES (?, ?, ?)';
         cnAddGame.query(insertQuery, [name, tag_id, description], (err, result) => {
             if (err) {
@@ -214,7 +214,7 @@ app.post('/addGame', (request, response) => {
                 // Get the auto-generated game_id from the inserted row
                 const game_id = result.insertId;
 
-                // Insert the new game into the 'store' table
+                // Insert the new game into the store table
                 const insertStoreQuery = 'INSERT INTO store (game_id, price, sold) VALUES (?, ?, 0)';
                 cnAddGame.query(insertStoreQuery, [game_id, price], (err, result) => {
                     if (err) {
@@ -233,12 +233,13 @@ app.post('/addGame', (request, response) => {
 });
 
 
-// Add this route to your existing Express app
+
 // Display the form to input user_id
 app.get('/library', (request, response) => {
     response.render('libraryForm'); // Create a new EJS file for the form, e.g., 'library-form.ejs'
 });
-// Handle the form submission to fetch the user's game library
+
+
 app.post('/library', (request, response) => {
     const userId = parseInt(request.body.userId);
 
@@ -258,7 +259,7 @@ app.post('/library', (request, response) => {
 
         // Query to fetch the user's game library
         const query = `
-            SELECT v.name AS title, s.sold AS number_sold
+            SELECT v.name AS title, v.tag_id AS genre, l.playtime
             FROM videogame v
             JOIN library l USING (game_id)
             JOIN store s USING (game_id)
@@ -310,7 +311,7 @@ app.get('/users', (request, response) => {
 
 // Display the form to add a new user
 app.get('/addUser', (request, response) => {
-    response.render('addUserForm'); // Create a new EJS file for the form, e.g., 'add-user-form.ejs'
+    response.render('addUserForm'); 
 });
 
 // Handle the form submission to add a new user
@@ -344,9 +345,9 @@ app.post('/addUser', (request, response) => {
     });
 });
 
-// Add this route to your existing Express app
+
 app.get('/friends', (request, response) => {
-    response.render('friendForm'); // Create a new EJS file for the form, e.g., 'friend-form.ejs'
+    response.render('friendForm'); 
 });
 
 // Handle the form submission to fetch the user's friends
@@ -449,7 +450,7 @@ app.post('/addFriend', (request, response) => {
     });
 });
 
-// Add this route to your existing Express app
+
 app.get('/groups', (request, response) => {
     // Connect to MySQL
     const cnGroups = mysql.createConnection(config);
