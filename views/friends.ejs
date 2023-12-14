@@ -1,0 +1,49 @@
+<!-- library-form.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1 {font-family: "Raleway", Arial, sans-serif}
+h1 {letter-spacing: 6px}
+</style>
+</head>
+<body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Friends</title>
+    <!-- Add your styling and links to external stylesheets here -->
+</head>
+
+<body>
+    <h1>User Friends</h1>
+
+    <% if (friends.length > 0) { %>
+        <ul>
+            <% friends.forEach(friend => { %>
+                <li><%= friend.friend_username %></li>
+            <% }); %>
+        </ul>
+    <% } else { %>
+        <p>No friends found.</p>
+    <% } %>
+
+    <!-- Add a form to input friend's user_id and submit the friend request -->
+    <form action="/addFriend" method="post">
+        <label for="friendId">Add Friend by User ID:</label>
+        <input type="text" id="friendId" name="friendId" required>
+        <input type="hidden" name="userId" value="<%= userId %>">
+        <button type="submit">Add Friend</button>
+    </form>
+
+    <a href="/"><button>Back to Home</button></a>
+</body>
+
+</html>

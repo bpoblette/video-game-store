@@ -1,0 +1,30 @@
+<!-- add-game.ejs -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Game</title>
+  <!-- Add your styling and scripts here -->
+</head>
+<body>
+
+  <h2>Add Game</h2>
+  
+  <form action="/addGame" method="post">
+    <label for="name">Game Name:</label>
+    <input type="text" id="name" name="name" required>
+  
+    <label for="tag_id">Genre:</label>
+    <input type="text" id="tag_id" name="tag_id" required>
+  
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description" required>
+
+    <label for="price">Price:</label>
+    <input type="text" id="price" name="price" required>
+  
+    <button type="submit">Add Game</button>
+  </form>
+
+</body>
+</html>
